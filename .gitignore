@@ -1,0 +1,18 @@
+# Python 字节码缓存
+__pycache__/
+*.py[cod]
+
+# 打包工具产物
+build/
+dist/
+*.spec
+
+# 虚拟环境 (无论叫什么名字都排除)
+venv/
+.venv/
+env/
+ENV/
+
+# 编辑器配置
+.vscode/
+.idea/
