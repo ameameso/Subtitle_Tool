@@ -6,7 +6,7 @@ entry_point = 'main.py'
 
 PyInstaller.__main__.run([
     entry_point,
-    '--name=ASS字幕提取工具',  # 给你的 exe 起个好听的名字
+    '--name=字幕提取工具',  # 给你的 exe 起个好听的名字
     '--onefile',                 # 封装成单个文件
     '--noconsole',               # 运行程序时不弹出黑色命令行窗口
     '--collect-all=tkinterdnd2', # 关键！强制收集拖拽库的所有依赖
