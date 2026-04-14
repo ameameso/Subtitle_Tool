@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinterdnd2 import DND_FILES, TkinterDnD
 from processor import process_file
+import os
 
 def on_drop(event):
     raw_path = event.data.strip('{}').strip('"')
