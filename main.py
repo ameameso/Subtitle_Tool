@@ -14,7 +14,7 @@ def on_drop(event):
         status_label.config(text=f"❌ 错误: {str(e)}", fg="#e74c3c")
 
 root = TkinterDnD.Tk()
-root.title("Subtitle Tool Pro v1.3")
+root.title("Subtitle Tool v1.3")
 root.geometry("450x380")
 root.config(bg="#f8f9fa")
 
