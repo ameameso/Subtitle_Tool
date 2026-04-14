@@ -1,18 +1,29 @@
 import PyInstaller.__main__
 import os
+import sys
 
-# 确保在打包前能找到你的入口文件
-entry_point = 'main.py'
+# 1. 动态获取当前脚本所在目录，确保路径绝对正确
+base_dir = os.path.dirname(os.path.abspath(__file__))
+entry_point = os.path.join(base_dir, 'main.py')
 
+# 2. 检查入口文件是否存在
+if not os.path.exists(entry_point):
+    print(f"❌ 错误：找不到入口文件 {entry_point}，请确保脚本在项目根目录运行。")
+    sys.exit(1)
+
+# 3. 执行打包
 PyInstaller.__main__.run([
     entry_point,
-    '--name=字幕提取工具',  # 给你的 exe 起个好听的名字
-    '--onefile',                 # 封装成单个文件
-    '--noconsole',               # 运行程序时不弹出黑色命令行窗口
-    '--collect-all=tkinterdnd2', # 关键！强制收集拖拽库的所有依赖
-    '--clean',                   # 清理之前的临时缓存
-    '--workpath=build',          # 指定临时文件存放路径
-    '--distpath=dist',           # 指定生成的 exe 存放路径
+    '--name=Subtitle_Tool_v1.3',  # 建议使用下划线，避免中文和括号在部分系统报错
+    '--onefile',                      # 单文件模式
+    '--noconsole',                    # 隐藏黑窗口
+    '--collect-all=tkinterdnd2',      # 收集拖拽库依赖
+    '--clean',                        # 清理缓存
+    '--workpath=build',               # 临时文件目录
+    '--distpath=dist',                # 成品目录
+    # 如果你想给程序加个图标，可以解开下面这行的注释（需要准备一个 .ico 文件）
+    # '--icon=logo.ico', 
 ])
 
-print("\n✅ 打包完成！请在 dist 文件夹中查看你的 .exe 文件。")
+print("\n✅ 打包完成！")
+print(f"📁 请查看目录: {os.path.join(base_dir, 'dist')}")
