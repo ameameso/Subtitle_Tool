@@ -29,9 +29,9 @@ mode_var = tk.StringVar(value="extract")
 
 # 使用更清晰的标签名
 modes = [
-    ("提取纯文本", "extract"),
-    ("ASS ↔ SRT", "convert"),
-    ("剪映 JSON 转字幕", "capcut")
+    ("SRT/ASS字幕提取纯文本txt", "extract"),
+    ("SRT ↔ ASS", "convert"),
+    ("剪映JSON转SRT字幕", "capcut")
 ]
 
 for text, value in modes:
