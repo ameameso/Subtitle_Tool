@@ -1,4 +1,4 @@
-# Subtitle Tool Pro (v1.3)
+# Subtitle Tool (v1.3.1)
 
 一个为研究员和创作者设计的全能字幕处理工具。支持提取、互转及专有的剪映 JSON 解析。
 
