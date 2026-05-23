@@ -14,7 +14,7 @@ if not os.path.exists(entry_point):
 # 3. 执行打包
 PyInstaller.__main__.run([
     entry_point,
-    '--name=Subtitle_Tool_v1.3.1',  # 建议使用下划线，避免中文和括号在部分系统报错
+    '--name=Subtitle_Tool_v1.5',  # 建议使用下划线，避免中文和括号在部分系统报错
     '--onefile',                      # 单文件模式
     '--noconsole',                    # 隐藏黑窗口
     '--collect-all=tkinterdnd2',      # 收集拖拽库依赖
