@@ -6,6 +6,8 @@ import customtkinter as ctk  # pip install customtkinter
 from tkinterdnd2 import DND_FILES, TkinterDnD
 from processor import process_file
 
+APP_VERSION = "1.5.1"
+
 # ==================== 1. Windows DPI 高清修复 ====================
 try:
     if platform.system() == "Windows":
@@ -41,7 +43,7 @@ class SubtitleToolApp(ctk.CTk, TkinterDnD.DnDWrapper):
             print(f"❌ 拖拽内核注入失败，请检查 tkinterdnd2 是否安装正确。错误: {e}")
         
         # 窗体基础配置
-        self.title("Subtitle Tool v1.5.0")
+        self.title(f"Subtitle Tool v{APP_VERSION}")
         self.geometry("700x420")
         self.minsize(620, 380)
         self.attributes('-topmost', True) # 窗口常驻置顶
@@ -145,7 +147,7 @@ class SubtitleToolApp(ctk.CTk, TkinterDnD.DnDWrapper):
         
         # 右下角极简版本号
         self.footer_lbl = ctk.CTkLabel(
-            self.workspace, text="v1.5.0 CustomTkinter UI", 
+            self.workspace, text=f"v{APP_VERSION} CustomTkinter UI",
             font=ctk.CTkFont(family="Segoe UI", size=10),
             text_color=STATUS_COLORS["mute"]
         )

@@ -6,15 +6,20 @@ import sys
 base_dir = os.path.dirname(os.path.abspath(__file__))
 entry_point = os.path.join(base_dir, 'main.py')
 
+# 使用 Conda 环境时，将其 DLL 目录加入搜索路径，确保 Tcl/Tk 等依赖被正确打包。
+conda_dll_dir = os.path.join(sys.prefix, 'Library', 'bin')
+if os.path.isdir(conda_dll_dir):
+    os.environ['PATH'] = conda_dll_dir + os.pathsep + os.environ.get('PATH', '')
+
 # 2. 检查入口文件是否存在
 if not os.path.exists(entry_point):
-    print(f"❌ 错误：找不到入口文件 {entry_point}，请确保脚本在项目根目录运行。")
+    print(f"错误：找不到入口文件 {entry_point}，请确保脚本在项目根目录运行。")
     sys.exit(1)
 
 # 3. 执行打包
 PyInstaller.__main__.run([
     entry_point,
-    '--name=Subtitle_Tool_v1.5',  # 建议使用下划线，避免中文和括号在部分系统报错
+    '--name=Subtitle_Tool_v1.5.1',  # 建议使用下划线，避免中文和括号在部分系统报错
     '--onefile',                      # 单文件模式
     '--noconsole',                    # 隐藏黑窗口
     '--collect-all=tkinterdnd2',      # 收集拖拽库依赖
@@ -25,5 +30,5 @@ PyInstaller.__main__.run([
     # '--icon=logo.ico', 
 ])
 
-print("\n✅ 打包完成！")
-print(f"📁 请查看目录: {os.path.join(base_dir, 'dist')}")
+print("\n打包完成！")
+print(f"请查看目录: {os.path.join(base_dir, 'dist')}")

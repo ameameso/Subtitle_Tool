@@ -30,7 +30,7 @@ def process_file(input_path, mode):
 
 def _handle_ass_extract(input_path, output_path):
     """处理 ASS 文件的私有函数"""
-    with open(input_path, 'r', encoding='utf-8') as f_in, \
+    with open(input_path, 'r', encoding='utf-8-sig') as f_in, \
          open(output_path, 'w', encoding='utf-8') as f_out:
         is_events = False
         for line in f_in:
@@ -48,7 +48,7 @@ def _handle_ass_extract(input_path, output_path):
 
 def _handle_srt_extract(input_path, output_path):
     """处理 SRT 文件的私有函数"""
-    with open(input_path, 'r', encoding='utf-8') as f_in, \
+    with open(input_path, 'r', encoding='utf-8-sig') as f_in, \
          open(output_path, 'w', encoding='utf-8') as f_out:
         for line in f_in:
             line = line.strip()
@@ -72,7 +72,7 @@ def _format_time(ms):
 
 def _handle_json_to_srt(json_file, output_srt):
     """专门处理剪映导出的 JSON 存根文件"""
-    with open(json_file, 'r', encoding='utf-8') as f:
+    with open(json_file, 'r', encoding='utf-8-sig') as f:
         data = json.load(f)
 
     fragments = data.get('extra_info', {}).get('subtitle_fragment_info_list', [])
@@ -104,7 +104,7 @@ def _handle_json_to_srt(json_file, output_srt):
 
 def _ass_to_srt(input_path, output_path):
     """ASS 转 SRT (保留时间轴)"""
-    with open(input_path, 'r', encoding='utf-8') as f_in, open(output_path, 'w', encoding='utf-8') as f_out:
+    with open(input_path, 'r', encoding='utf-8-sig') as f_in, open(output_path, 'w', encoding='utf-8') as f_out:
         is_events = False
         index = 1
         for line in f_in:
@@ -124,7 +124,7 @@ def _srt_to_ass(input_path, output_path):
     """SRT 转 ASS (保留时间轴)"""
     # 这里提供一个基础模板，ASS 需要 Header 才能运行
     header = "[Script Info]\nScriptType: v4.00+\n\n[Events]\nFormat: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text\n"
-    with open(input_path, 'r', encoding='utf-8') as f_in, open(output_path, 'w', encoding='utf-8') as f_out:
+    with open(input_path, 'r', encoding='utf-8-sig') as f_in, open(output_path, 'w', encoding='utf-8') as f_out:
         f_out.write(header)
         content = f_in.read()
         blocks = re.findall(r'\d+\n(\d{2}:\d{2}:\d{2},\d{3}) --> (\d{2}:\d{2}:\d{2},\d{3})\n([\s\S]*?)(?=\n\d+\n|\Z)', content)
